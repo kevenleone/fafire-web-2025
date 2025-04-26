@@ -1,16 +1,8 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import {
-  Button,
-  Table,
-  TableContainer,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import Page from '@/components/page'
+import Table from '@/components/table'
 
 export const Route = createFileRoute('/courses/')({
   component: RouteComponent,
@@ -35,24 +27,13 @@ function RouteComponent() {
         </Button>
       }
     >
-      <TableContainer>
-        <Table variant="simple">
-          <Thead>
-            <Tr>
-              <Th>ID</Th>
-              <Th>Course</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {courses.map((course, index) => (
-              <Tr key={index}>
-                <Td>{course.id}</Td>
-                <Td>{course.name}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <Table
+        columns={[
+          { label: 'ID', name: 'id' },
+          { label: 'Name', name: 'name' },
+        ]}
+        items={courses}
+      />
     </Page>
   )
 }
