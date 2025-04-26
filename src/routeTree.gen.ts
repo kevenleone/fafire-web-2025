@@ -11,20 +11,48 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as FafireImport } from './routes/fafire'
+import { Route as ProfessorsImport } from './routes/professors'
+import { Route as DepartmentsImport } from './routes/departments'
+import { Route as AllocationImport } from './routes/allocation'
 import { Route as IndexImport } from './routes/index'
+import { Route as CoursesIndexImport } from './routes/courses/index'
+import { Route as CoursesNewImport } from './routes/courses/new'
 
 // Create/Update Routes
 
-const FafireRoute = FafireImport.update({
-  id: '/fafire',
-  path: '/fafire',
+const ProfessorsRoute = ProfessorsImport.update({
+  id: '/professors',
+  path: '/professors',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DepartmentsRoute = DepartmentsImport.update({
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AllocationRoute = AllocationImport.update({
+  id: '/allocation',
+  path: '/allocation',
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CoursesIndexRoute = CoursesIndexImport.update({
+  id: '/courses/',
+  path: '/courses/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CoursesNewRoute = CoursesNewImport.update({
+  id: '/courses/new',
+  path: '/courses/new',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +67,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/fafire': {
-      id: '/fafire'
-      path: '/fafire'
-      fullPath: '/fafire'
-      preLoaderRoute: typeof FafireImport
+    '/allocation': {
+      id: '/allocation'
+      path: '/allocation'
+      fullPath: '/allocation'
+      preLoaderRoute: typeof AllocationImport
+      parentRoute: typeof rootRoute
+    }
+    '/departments': {
+      id: '/departments'
+      path: '/departments'
+      fullPath: '/departments'
+      preLoaderRoute: typeof DepartmentsImport
+      parentRoute: typeof rootRoute
+    }
+    '/professors': {
+      id: '/professors'
+      path: '/professors'
+      fullPath: '/professors'
+      preLoaderRoute: typeof ProfessorsImport
+      parentRoute: typeof rootRoute
+    }
+    '/courses/new': {
+      id: '/courses/new'
+      path: '/courses/new'
+      fullPath: '/courses/new'
+      preLoaderRoute: typeof CoursesNewImport
+      parentRoute: typeof rootRoute
+    }
+    '/courses/': {
+      id: '/courses/'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +109,76 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/fafire': typeof FafireRoute
+  '/allocation': typeof AllocationRoute
+  '/departments': typeof DepartmentsRoute
+  '/professors': typeof ProfessorsRoute
+  '/courses/new': typeof CoursesNewRoute
+  '/courses': typeof CoursesIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/fafire': typeof FafireRoute
+  '/allocation': typeof AllocationRoute
+  '/departments': typeof DepartmentsRoute
+  '/professors': typeof ProfessorsRoute
+  '/courses/new': typeof CoursesNewRoute
+  '/courses': typeof CoursesIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/fafire': typeof FafireRoute
+  '/allocation': typeof AllocationRoute
+  '/departments': typeof DepartmentsRoute
+  '/professors': typeof ProfessorsRoute
+  '/courses/new': typeof CoursesNewRoute
+  '/courses/': typeof CoursesIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/fafire'
+  fullPaths:
+    | '/'
+    | '/allocation'
+    | '/departments'
+    | '/professors'
+    | '/courses/new'
+    | '/courses'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/fafire'
-  id: '__root__' | '/' | '/fafire'
+  to:
+    | '/'
+    | '/allocation'
+    | '/departments'
+    | '/professors'
+    | '/courses/new'
+    | '/courses'
+  id:
+    | '__root__'
+    | '/'
+    | '/allocation'
+    | '/departments'
+    | '/professors'
+    | '/courses/new'
+    | '/courses/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  FafireRoute: typeof FafireRoute
+  AllocationRoute: typeof AllocationRoute
+  DepartmentsRoute: typeof DepartmentsRoute
+  ProfessorsRoute: typeof ProfessorsRoute
+  CoursesNewRoute: typeof CoursesNewRoute
+  CoursesIndexRoute: typeof CoursesIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  FafireRoute: FafireRoute,
+  AllocationRoute: AllocationRoute,
+  DepartmentsRoute: DepartmentsRoute,
+  ProfessorsRoute: ProfessorsRoute,
+  CoursesNewRoute: CoursesNewRoute,
+  CoursesIndexRoute: CoursesIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +192,30 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/fafire"
+        "/allocation",
+        "/departments",
+        "/professors",
+        "/courses/new",
+        "/courses/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/fafire": {
-      "filePath": "fafire.tsx"
+    "/allocation": {
+      "filePath": "allocation.tsx"
+    },
+    "/departments": {
+      "filePath": "departments.tsx"
+    },
+    "/professors": {
+      "filePath": "professors.tsx"
+    },
+    "/courses/new": {
+      "filePath": "courses/new.tsx"
+    },
+    "/courses/": {
+      "filePath": "courses/index.tsx"
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "allocation": [
+    {
+      "id": "1",
+      "courseId": "1",
+      "professorId": "1",
+      "date": "2025-04-26T11:25:00T"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "name": "Frontend"
+    },
+    {
+      "id": "1",
+      "name": "Frontend"
+    },
+    {
+      "id": "1",
+      "name": "Frontend"
+    }
+  ],
+  "departments": [
+    {
+      "id": "1",
+      "name": "IT"
+    }
+  ],
+  "professors": [
+    {
+      "id": "1",
+      "name": "Keven",
+      "cpf": "111.111.111-33"
+    }
+  ]
+}
