@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import useSWR from 'swr'
 import Page from '@/components/page'
 import Table from '@/components/table'
 
@@ -9,17 +9,11 @@ export const Route = createFileRoute('/professors')({
 })
 
 function RouteComponent() {
-  const [professors, setProfessors] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:4444/professors')
-      .then((response) => response.json())
-      .then((result) => setProfessors(result))
-      .catch((error) => console.error(error))
-  }, [])
+  const { data: professors = [], isLoading } = useSWR('/professors')
 
   return (
     <Page
+      loading={isLoading}
       title="Professor"
       rightElement={
         <Button as={Link} to="/professors/new" colorScheme="blue">

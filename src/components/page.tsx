@@ -1,11 +1,12 @@
-import { Box, Container, Heading, InputRightElement } from '@chakra-ui/react'
+import { Box, Container, Heading, Spinner } from '@chakra-ui/react'
 
 import type { ReactNode } from 'react'
 
 interface PageProps {
-  rightElement: ReactNode
+  rightElement?: ReactNode
   children: ReactNode
   title: string
+  loading?: boolean
 }
 
 export default function Page(props: PageProps) {
@@ -17,7 +18,19 @@ export default function Page(props: PageProps) {
         {props.rightElement}
       </Box>
 
-      <Box marginTop={10}>{props.children}</Box>
+      {props.loading ? (
+        <Box display="flex" justifyContent="center" mt={100}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="blue.500"
+            size="xl"
+          />
+        </Box>
+      ) : (
+        <Box marginTop={10}>{props.children}</Box>
+      )}
     </Container>
   )
 }

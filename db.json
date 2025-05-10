@@ -1,9 +1,15 @@
 {
-  "allocation": [
+  "allocations": [
     {
       "id": "1",
-      "courseId": "1",
-      "professorId": "1",
+      "course": {
+        "id": "1",
+        "name": "Frontend"
+      },
+      "professor": {
+        "id": "1",
+        "name": "Keven Leone"
+      },
       "date": "2025-04-26T11:25:00T"
     }
   ],
@@ -13,12 +19,61 @@
       "name": "Frontend"
     },
     {
-      "id": "1",
+      "id": "2",
+      "name": "Backend"
+    },
+    {
+      "id": "3",
+      "name": "Mobile"
+    },
+    {
+      "id": "4",
+      "name": "Documentation"
+    },
+    {
+      "id": "166e",
+      "description": "Frontend Development Frontend DevelopmentFrontend Development",
+      "name": "Frontend Development"
+    },
+    {
+      "id": "6598",
+      "description": "Backend Developmentasdasd",
+      "name": "Backend Development"
+    },
+    {
+      "id": "cda0",
+      "description": "qweqweqwe",
       "name": "Frontend"
     },
     {
-      "id": "1",
-      "name": "Frontend"
+      "id": "b2c9",
+      "description": "Saawwwe",
+      "name": "Spanish"
+    },
+    {
+      "id": "d3a1",
+      "description": "wqweqweqwe",
+      "name": "Www"
+    },
+    {
+      "id": "9dd8",
+      "description": "eqweqweqw",
+      "name": "qweqw"
+    },
+    {
+      "id": "112f",
+      "description": "eqweqweqw",
+      "name": "QWeqweqw"
+    },
+    {
+      "id": "f10a",
+      "description": "",
+      "name": ""
+    },
+    {
+      "id": "350e",
+      "description": "          ",
+      "name": "    "
     }
   ],
   "departments": [
