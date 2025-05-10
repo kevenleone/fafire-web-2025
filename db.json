@@ -15,65 +15,24 @@
   ],
   "courses": [
     {
-      "id": "1",
-      "name": "Frontend"
+      "id": "1492",
+      "description": "Course 1 Description",
+      "name": "Course 1"
     },
     {
-      "id": "2",
-      "name": "Backend"
+      "id": "5f37",
+      "description": "Course 2 Description",
+      "name": "Course 2"
     },
     {
-      "id": "3",
-      "name": "Mobile"
+      "id": "6af9",
+      "description": "Course 3 Description",
+      "name": "Course 3"
     },
     {
-      "id": "4",
-      "name": "Documentation"
-    },
-    {
-      "id": "166e",
-      "description": "Frontend Development Frontend DevelopmentFrontend Development",
+      "id": "db4d",
+      "description": "Frontenddd111",
       "name": "Frontend Development"
-    },
-    {
-      "id": "6598",
-      "description": "Backend Developmentasdasd",
-      "name": "Backend Development"
-    },
-    {
-      "id": "cda0",
-      "description": "qweqweqwe",
-      "name": "Frontend"
-    },
-    {
-      "id": "b2c9",
-      "description": "Saawwwe",
-      "name": "Spanish"
-    },
-    {
-      "id": "d3a1",
-      "description": "wqweqweqwe",
-      "name": "Www"
-    },
-    {
-      "id": "9dd8",
-      "description": "eqweqweqw",
-      "name": "qweqw"
-    },
-    {
-      "id": "112f",
-      "description": "eqweqweqw",
-      "name": "QWeqweqw"
-    },
-    {
-      "id": "f10a",
-      "description": "",
-      "name": ""
-    },
-    {
-      "id": "350e",
-      "description": "          ",
-      "name": "    "
     }
   ],
   "departments": [

@@ -4,7 +4,7 @@ import useSWR from 'swr'
 import Page from '@/components/page'
 import Table from '@/components/table'
 
-export const Route = createFileRoute('/allocation')({
+export const Route = createFileRoute('/allocation/')({
   component: RouteComponent,
 })
 

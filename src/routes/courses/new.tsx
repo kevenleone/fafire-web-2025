@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
 import {
   Box,
   Button,
@@ -9,25 +9,40 @@ import {
   useToast,
 } from '@chakra-ui/react'
 import { useState } from 'react'
+import { z } from 'zod'
+import type { Course } from '@/types'
 import Page from '@/components/page'
 import { fetcher } from '@/services/fetcher'
 
 export const Route = createFileRoute('/courses/new')({
-  component: RouteComponent,
+  component: CourseForm,
 })
 
-function RouteComponent() {
+type CourseFormProps = {
+  course?: Course
+  id?: string
+}
+
+const courseSchema = z.object({
+  description: z.string().max(1000).optional(),
+  name: z.string().min(3).max(30),
+})
+
+export function CourseForm({ course, id }: CourseFormProps) {
+  const [description, setDescription] = useState(course?.description)
   const [loading, setLoading] = useState(false)
+  const [name, setName] = useState(course?.name)
   const navigate = useNavigate()
   const toast = useToast()
-  const [description, setDescription] = useState('')
-  const [name, setName] = useState('')
 
   async function onSubmit() {
     try {
       setLoading(true)
 
-      await fetcher('/courses', {
+      const path = id ? `/courses/${id}` : '/courses'
+      const method = id ? 'PATCH' : 'POST'
+
+      await fetcher(path, {
         body: JSON.stringify({
           description,
           name,
@@ -35,12 +50,12 @@ function RouteComponent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        method: 'POST',
+        method,
       })
 
       toast({
-        title: 'Course created.',
-        description: "We've created your course for you.",
+        title: 'Success.',
+        description: 'Action completed successfully',
         status: 'success',
       })
 
@@ -52,14 +67,16 @@ function RouteComponent() {
         status: 'error',
       })
     }
+
     setLoading(false)
   }
 
   return (
-    <Page title="Create Course">
+    <Page title={id ? 'Update Course' : 'Create Course'}>
       <FormControl>
         <FormLabel>Name</FormLabel>
         <Input
+          value={name}
           id="name"
           name="name"
           type="text"
@@ -72,6 +89,7 @@ function RouteComponent() {
       <FormControl>
         <FormLabel>Description</FormLabel>
         <Textarea
+          value={description}
           id="description"
           name="description"
           onChange={({ target: { value } }) => setDescription(value)}
@@ -79,9 +97,10 @@ function RouteComponent() {
       </FormControl>
 
       <Box display="flex" justifyContent="space-between" mt={5}>
-        <Button>Cancel</Button>
+        <Button as={Link} to="/courses">
+          Cancel
+        </Button>
         <Button
-          disabled={!name.trim() || !description.trim()}
           isLoading={loading}
           ml={5}
           colorScheme="blue"
